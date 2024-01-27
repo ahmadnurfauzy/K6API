@@ -14,7 +14,7 @@ export const options = {
 
 export default function () {
     const name = 'morpheus'
-    const job = 'leader'
+    const job = 'zion resident'
     group('API Create', function (){
         const FULL_URL = BASE_URL + '/api/users';
         const payload = JSON.stringify({
