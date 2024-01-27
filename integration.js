@@ -3,11 +3,10 @@ import {check, sleep, group} from 'k6';
 const BASE_URL = 'https://reqres.in';
 
 export default function (){
-    const name = 'morpheus'
     group('Create with valid request should success', function () {
         const FULL_URL = BASE_URL + '/api/users';
         const payload = JSON.stringify({
-            name: name,
+            name: 'morpheus',
             job: 'leader'
         })
         const params = {
@@ -24,7 +23,7 @@ export default function (){
             check(res, {
                 'response name should same with request': (res) => {
                     const response = JSON.parse(res.body);
-                    return response.name === name
+                    return response.name === 'morpheus'
                 },
             });
             check(res, {
@@ -39,7 +38,7 @@ sleep(1);
     group('Update with valid request should success', function () {
         const FULL_URL = BASE_URL + '/api/users/2';
         const payload = JSON.stringify({
-            name: name,
+            name: 'morpheus',
             job: 'zion resident'
         })
         const params = {
@@ -54,9 +53,9 @@ sleep(1);
             'response code was 200': (res) => res.status == 200,
         });
         check(res, {
-            'response name shoulde same with request': (res) => {
+            'response name should same with request': (res) => {
                 const response = JSON.parse(res.body);
-                return response.name === name
+                return response.name === 'morpheus'
             },
         });
         check(res, {

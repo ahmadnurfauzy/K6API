@@ -13,13 +13,11 @@ export const options = {
 };
 
 export default function () {
-    const name = 'morpheus'
-    const job = 'zion resident'
     group('API Create', function (){
         const FULL_URL = BASE_URL + '/api/users';
         const payload = JSON.stringify({
-            name : name,
-            job: job
+            name : 'morpheus',
+            job: 'leader'
         })
         const params= {
             headers: {
@@ -35,13 +33,13 @@ export default function () {
         check(res, {
             'response name should same with request': (res) => {
                 const response = JSON.parse(res.body);
-                return response.name === name
+                return response.name === 'morpheus'
             },
         });
         check(res, {
             'response job should same with request': (res) => {
                 const response = JSON.parse(res.body);
-                return response.job === job
+                return response.job === 'leader'
             },
         });
     });
@@ -50,8 +48,8 @@ export default function () {
     group('API Update', function () {
         const FULL_URL = BASE_URL + '/api/users/2';
         const payload = JSON.stringify({
-            name : name,
-            job: job
+            name : 'morpheus',
+            job: 'zion resident'
         })
         const params = {
             headers: {
@@ -67,13 +65,13 @@ export default function () {
         check(res, {
             'response name should same with request': (res) => {
                 const response = JSON.parse(res.body);
-                return response.name === name
+                return response.name === 'morpheus'
             },
         });
         check(res, {
             'response job should same with request': (res) => {
                 const response = JSON.parse(res.body);
-                return response.job === job
+                return response.job === 'zion resident'
             },
         });
     });
